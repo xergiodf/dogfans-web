@@ -31,7 +31,7 @@
                             <div class="col-sm-offset-2 col-sm-10">
                                 <section id="photos">
                                     <a ng-click="vm.fn.openImg($index)" style="cursor: pointer;"
-                                       ng-repeat="image in vm.data.breedWrapper[0].breed.images">
+                                       ng-repeat="image in vm.fn.loadImg(favorite)">
                                         <img ng-src="{{image}}" />
                                     </a>
                                 </section>

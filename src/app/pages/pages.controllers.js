@@ -7,7 +7,7 @@
     /** @ngInject */
     function pageController(BreedService, Lightbox, $scope) {
         var bSrvc = BreedService;
-
+        var amountImgFav = 5;
         var vm = this;
 
         vm.initialize = initialize;
@@ -21,6 +21,7 @@
         vm.fn = {
             fav: saveFavorite,
             unfav: removeFavorite,
+            loadImg: loadImages,
             openImg: openLightboxModal
         };
 
@@ -70,6 +71,18 @@
                     console.error(err);
                 });
         }
+
+        function loadImages(favorite) {
+            if (!angular.isUndefined(vm.data.breedWrapper[0])) {
+                if (favorite) {
+                    return vm.data.breedWrapper[0].breed.images.filter(function (value, index) {
+                        return index < amountImgFav;
+                    });
+                }
+                return vm.data.breedWrapper[0].breed.images;
+            }
+        }
+
         function openLightboxModal(index) {
             Lightbox.openModal(vm.data.breedWrapper[0].breed.images, index);
         }
