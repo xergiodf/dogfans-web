@@ -16,7 +16,7 @@
         .config(Others)
         .run(AppRun)
         .config(routeConfig)
-        .constant('API_DOGFANS', 'http://192.81.130.21:8080/dogfans/api');
+        .constant('API_DOGFANS', 'api');
 
     /** @ngInject */
     function routeConfig($urlRouterProvider) {

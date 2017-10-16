@@ -5,7 +5,7 @@
         .controller('PageController', pageController);
 
     /** @ngInject */
-    function pageController(BreedService, $scope) {
+    function pageController(BreedService, Lightbox, $scope) {
         var bSrvc = BreedService;
 
         var vm = this;
@@ -20,7 +20,8 @@
 
         vm.fn = {
             fav: saveFavorite,
-            unfav: removeFavorite
+            unfav: removeFavorite,
+            openImg: openLightboxModal
         };
 
         vm.initialize();
@@ -68,6 +69,9 @@
                 function (err) {
                     console.error(err);
                 });
+        }
+        function openLightboxModal(index) {
+            Lightbox.openModal(vm.data.breedWrapper[0].breed.images, index);
         }
     }
 })();

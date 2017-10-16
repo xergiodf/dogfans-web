@@ -12,24 +12,7 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
             <div ba-panel ba-panel-title="Breeds">
-                <uib-accordion>
-                    <uib-accordion-group
-                            panel-class="bootstrap-panel accordion-panel panel-default panel-success"
-                            ng-repeat="item in vm.data.breedList | filter:vm.filter.search"
-                            ng-if="item.favorite">
-                        <uib-accordion-heading>
-                            <i class="fa ion-star"></i> <strong>{{item.breed.name}}</strong>
-                        </uib-accordion-heading>
-
-                        <div class="horizontal-scroll">
-                            <div class="row">
-                                <div class="col-lg-3 col-md-3" ng-repeat="image in item.breed.images">
-                                    <img ng-src="{{image}}" class="img-thumbnail"/>
-                                </div>
-                            </div>
-                        </div>
-                    </uib-accordion-group>
-                </uib-accordion>
+                <div ng-include="'app/pages/templates/breedsAccordionList.html'" ng-init="favorite=true;"></div>
             </div>
         </div>
     </div>
